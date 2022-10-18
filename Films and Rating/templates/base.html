@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        button
+        {
+            {#padding-bottom: 20px;#}
+            border-radius: 25px;
+            font-family: "Comic Sans MS", sans-serif;
+            background: #ffcb63;
+            justify-content: center;
+        }
+        body
+        {
+            background-color: #fcf99f;
+        }
+
+        title
+        {
+            font-family: "Comic Sans MS", sans-serif;
+        }
+
+        div
+        {
+            background-color: #e345f7;
+            font-family: "Comic Sans MS", sans-serif;
+            display: inline-block;
+            border: 1px solid #000;
+            margin: 10px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    {#
+        базовый шаблон, который используют остальные шаблоны
+        имеет общую структуру, чтобы не дублировать код
+
+        инициируем блок body, который переопределяется в шаблонах
+    #}
+    {% block body %}{% endblock %}
+</body>
+</html>

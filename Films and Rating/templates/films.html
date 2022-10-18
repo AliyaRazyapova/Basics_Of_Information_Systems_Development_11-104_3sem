@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1 onclick="location.href='{{ url_for('films_list')}}'">{{ title }}</h1>
+    <form method="get" action="?">
+        <input type="text" name="rating" placeholder="Enter minimal rating">
+        <button type="submit">Filter</button>
+    </form>
+
+    <h1>{{ title }}</h1>
+    {#  условие должно обязательно закрываться конструкцией {% endif %} #}
+    {#  цикл так же должен закрываться конструкцией {% endfor %} #}
+    {% if country %}
+        {% for film in films %}
+            {% if country == film.country %}
+                <div onclick="location.href = '{{ url_for("get_film", film_id=film.id) }}'">
+                    <p>{{ film.name }}</p>
+                    <p>{{ film.rating }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% for film in films %}
+            <div onclick="location.href = '{{ url_for("get_film", film_id=film.id) }}'">
+                <p>{{ film.name }}</p>
+                <p>{{ film.rating }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <br>
+    <a href="{{ url_for("add_get")}}">
+    <button>Добавить новый фильм</button>
+    </a>
+{% endblock %}
