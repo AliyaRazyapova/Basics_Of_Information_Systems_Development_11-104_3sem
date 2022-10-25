@@ -3,6 +3,10 @@
 import json
 import os
 
+import sys
+import codecs
+
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 class Util:
     USERS = "cgi-bin/users.json"
@@ -17,6 +21,7 @@ class Util:
 
         create_file(self.USERS, {})
         create_file(self.ONLINE, [])
+        create_file(self.POSTS, {})
 
     def get_data(self, path):
         with open(path, 'r', encoding='utf-8') as f:
@@ -78,21 +83,3 @@ class Util:
             return posts[login]
         except KeyError:
             return []
-
-    # def set_post(self, login, post):
-    #     post_t = self.get_data(self.POSTS)
-    #     post_t.setdefault(login, [])
-    #     post_t[login].append(post)
-    #     self.set_data(self.POSTS, post_t)
-    #
-    # def list_of_posts(self, user):
-    #     """Список постов для отображения на странице"""
-    #     if self.is_online(user):
-    #         posts = self.get_data(self.POSTS)
-    #         users_posts = []
-    #         for post in posts[user]:
-    #             content = user + ' : ' + post
-    #             users_posts.append(content)
-    #         return '<br>'.join(users_posts)
-    #     else:
-    #         return ''

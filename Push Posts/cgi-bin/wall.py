@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import cgi
-
+import html
 from util import Util
 
 form = cgi.FieldStorage()
@@ -10,7 +10,7 @@ action = form.getfirst("action")
 login = form.getfirst("login")
 password = form.getfirst("password")
 
-posts = form.getfirst("posts")
+posts = form.getfirst("post")
 
 util = Util()
 
@@ -66,8 +66,8 @@ else:
             <h3>Добавить новый пост</h3>
             <textarea name="post"></textarea>
             <br>
-            <input type="hidden" name="action" value="set_post">
-            <input type="submit">
+            <input type="hidden" name="action" value="posting">
+            <input type="submit" value="Выложить">
         </form>
     '''
     for i in util.get_posts(user):
@@ -85,10 +85,10 @@ pattern = f'''
 
     {message}
     
-    {posts}
+    
 </body>
 </html>
 '''
 
 print('Content-type: text/html\n')
-print(pattern.format(form=form, message=message))
+print(pattern.format(form=form, posts = util.get_posts(user), message=message))
