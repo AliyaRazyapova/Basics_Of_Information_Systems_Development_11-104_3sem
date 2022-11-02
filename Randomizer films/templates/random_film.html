@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="content">
+        <div type="submit" class="all" onclick="location.href = '{{ url_for("films_list") }}'">Все фильмы</div>
+
+        <button type="submit" class="get_film" id="btn">Сгенерировать фильм</button>
+
+        <p id="name"></p>
+        <p id="rating"></p>
+        <p id="country"></p>
+
+        <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+        <script>
+            $('#btn').on('click', function () {
+                let data = {}
+                $.ajax({
+                    url: '{{ url_for('get_random') }}',
+                    method: 'get',
+                    dataType: 'html',
+                    data: data,
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        $('#name').html(data['randint']['name'])
+                        $('#rating').html(data['randint']['rating'])
+                        $('#country').html(data['randint']['country'])
+                    }
+                })
+            })
+        </script>
+    </div>
+    <style>
+        .content{
+            display: inline-block;
+        }
+    </style>
+{% endblock %}

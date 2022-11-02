@@ -1,0 +1,46 @@
+button
+{
+    border-radius: 25px;
+    font-family: "Comic Sans MS", sans-serif;
+    background: #ffcb63;
+    justify-content: center;
+}
+body
+{
+    background-color: #3f5756;
+}
+
+title
+{
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+div
+{
+    background-color: #490175;
+    font-family: "Comic Sans MS", sans-serif;
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+html{
+    height: 98%;
+}
+
+.content{
+    width: 100%;
+    background: none;
+    height: auto;
+    margin: 0;
+}
+
+.form-block, .film{
+    display: block;
+}
+
+h1, p{
+    color: white;
+}
